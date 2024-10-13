@@ -1,10 +1,10 @@
+import { log } from 'console'
 import { NextResponse } from 'next/server'
-import { OpenAIApi, Configuration } from 'openai'
+import OpenAI from 'openai'
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
-const openai = new OpenAIApi(configuration)
 
 export async function POST(req: Request) {
   const { prompt } = await req.json()
@@ -12,14 +12,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Prompt is required' }, { status: 400 })
   }
   try {
-    const response = await openai.createImage({
+    console.log('A')
+    const response = await openai.images.generate({
       prompt,
       n: 1,
       size: '1024x1024',
     })
-    const imageUrl = response.data.data[0].url
+    console.log('B')
+    console.log(response)
+    const imageUrl = response.data[0].url
     return NextResponse.json({ imageUrl })
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to generate image' },
       { status: 500 }
