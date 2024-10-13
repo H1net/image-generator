@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import ImageDisplay from '../components/ImageDisplay'
 import Loader from '../components/Loader'
