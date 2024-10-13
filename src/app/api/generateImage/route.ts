@@ -1,5 +1,5 @@
-import { Configuration, OpenAIApi } from 'openai'
 import { NextResponse } from 'next/server'
+import { OpenAIApi, Configuration } from 'openai'
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
