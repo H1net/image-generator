@@ -22,6 +22,7 @@ export default function Home() {
         body: JSON.stringify({ prompt }),
       })
       if (!response.ok) {
+        console.log(response)
         throw new Error('Failed to generate image')
       }
       const data = await response.json()

@@ -1,4 +1,4 @@
-import { log } from 'console'
+// import { log } from 'console'
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ imageUrl })
   } catch {
     return NextResponse.json(
-      { error: 'Failed to generate image' },
+      { error: 'Failed to generate an image' },
       { status: 500 }
     )
   }
